@@ -39,11 +39,11 @@ public class StatsService {
                 maxMonth = i;
             }
         }
-        return maxMonth + 1;
+        return maxMonth +1;
     }
 
     public int getMonthMinSales(long[] sales) { //номер месяца с мin суммой
-        int minMonth = 0; //
+        int minMonth = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] <= sales[minMonth]) {
                 minMonth = i;
@@ -53,23 +53,23 @@ public class StatsService {
     }
 
     public int numberMonthAboveAverage(long[] sales) {
-        int counter = 0;
-        for (long sale : sales) {
-            if (sale > getAverage(sales)) {
-                counter++;
+        int maxMonthAbove = 0;
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] > getAverage(sales)) {
+                maxMonthAbove++;
             }
         }
-        return counter + 1;
+        return maxMonthAbove;
     }
 
     public int numberMonthBelowAverage(long[] sales) { //кол-во месяцев где продажи ниже среднего
-        int counter = 0;
-        for (long sale : sales) {
-            if (sale < getAverage(sales)) {
-                counter++;
+        int minMonthBelow = 0;
+        for (int i =0; i<sales.length; i++) {
+            if (sales[i] < getAverage(sales)) {
+                minMonthBelow++;
             }
         }
-        return counter + 1;
+        return minMonthBelow;
     }
 
 }
