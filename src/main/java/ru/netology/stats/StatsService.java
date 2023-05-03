@@ -23,13 +23,12 @@ public class StatsService {
     }
 
 
-    public long getAverage(long[] sales) { //средняя сумма всех продаж в месяц
-        long allSum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            allSum += sales[i];
-        }
-        long getAverage = allSum / 12;
-        return getAverage;
+    public long getAverage(long[] sales) { //средняя сумма всех продаж в месяц// long allSum = 0;
+        // for (int i = 0; i < sales.length; i++) {
+        //     allSum += sales[i];
+        // }
+        long getAverageSale = sum(sales) / 12;
+        return getAverageSale;
     }
 
     public int getMonthMaxSales(long[] sales) { //номер месяца с максимальной суммой
@@ -39,7 +38,7 @@ public class StatsService {
                 maxMonth = i;
             }
         }
-        return maxMonth +1;
+        return maxMonth + 1;
     }
 
     public int getMonthMinSales(long[] sales) { //номер месяца с мin суммой
@@ -52,10 +51,12 @@ public class StatsService {
         return minMonth + 1;
     }
 
-    public int numberMonthAboveAverage(long[] sales) {
+    public int numberMonthAboveAverage(long[] sales) { //кол-во месяцев с продажами выше среднего
         int maxMonthAbove = 0;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > getAverage(sales)) {
+        // for (int i = 0; i < sales.length; i++) {
+        //     if (sales[i] > getAverage(sales)) {
+        for (long sale : sales) {
+            if (sale > getAverage(sales)) {
                 maxMonthAbove++;
             }
         }
@@ -64,8 +65,10 @@ public class StatsService {
 
     public int numberMonthBelowAverage(long[] sales) { //кол-во месяцев где продажи ниже среднего
         int minMonthBelow = 0;
-        for (int i =0; i<sales.length; i++) {
-            if (sales[i] < getAverage(sales)) {
+        //for (int i = 0; i < sales.length; i++) {
+        //    if (sales[i] < getAverage(sales)) {
+        for (long sale : sales) {
+            if (sale < getAverage(sales)) {
                 minMonthBelow++;
             }
         }
