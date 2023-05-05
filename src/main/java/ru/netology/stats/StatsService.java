@@ -5,12 +5,12 @@ public class StatsService {
         int minMonth = 0; // номер месяца с минимальными продажами среди просмотренных ранее
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] <= sales[minMonth]) { // значит, в рассматриваемом i-м месяце продаж меньше
-                minMonth = i; // запомним его как минимальный
+            if (sales[i] <= sales[minMonth]) {
+                minMonth = i;
             }
         }
 
-        return minMonth + 1; // месяца нумеруются с 1, а индексы массива с 0, нужно сдвинуть ответ на 1
+        return minMonth + 1; //
     }
 
     public long sum(long[] sales) { // сумма всех продаж
@@ -23,10 +23,7 @@ public class StatsService {
     }
 
 
-    public long getAverage(long[] sales) { //средняя сумма всех продаж в месяц// long allSum = 0;
-        // for (int i = 0; i < sales.length; i++) {
-        //     allSum += sales[i];
-        // }
+    public long getAverage(long[] sales) { //средняя сумма всех продаж в месяц
         long getAverageSale = sum(sales) / 12;
         return getAverageSale;
     }
@@ -53,10 +50,9 @@ public class StatsService {
 
     public int numberMonthAboveAverage(long[] sales) { //кол-во месяцев с продажами выше среднего
         int maxMonthAbove = 0;
-        // for (int i = 0; i < sales.length; i++) {
-        //     if (sales[i] > getAverage(sales)) {
+        long averageSale = getAverage(sales);
         for (long sale : sales) {
-            if (sale > getAverage(sales)) {
+            if (sale > averageSale) {
                 maxMonthAbove++;
             }
         }
@@ -65,10 +61,9 @@ public class StatsService {
 
     public int numberMonthBelowAverage(long[] sales) { //кол-во месяцев где продажи ниже среднего
         int minMonthBelow = 0;
-        //for (int i = 0; i < sales.length; i++) {
-        //    if (sales[i] < getAverage(sales)) {
+        long averageSale = getAverage(sales);
         for (long sale : sales) {
-            if (sale < getAverage(sales)) {
+            if (sale < averageSale) {
                 minMonthBelow++;
             }
         }
